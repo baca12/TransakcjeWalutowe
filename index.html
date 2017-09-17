@@ -15,7 +15,7 @@ document.getElementById("stawkaAktualna").innerHTML=x;
 document.getElementById("wpiszPrzelicznik").style.display='none'; 
 document.getElementById("stawka").value = x;
     
-    odswiezanie();
+    //odswiezanie();
     minMax();
 }
  
@@ -48,8 +48,8 @@ Aktualny przelicznik:
 	<td>tytuł transakcji</td>	<td>kwota w &euro;</td> <td>kwota w PLN</td>	
 </tr>
 <tr>
-	<td><input type="text" id="tytulT" required placeholder="Wpisz tytuł operacji"></td>
-    <td><input type="text" id="kwotaE" required placeholder="Wpisz kwotę w EURO"></td>
+	<td><input type="text" id="tytulT" required placeholder="Wpisz tytuł operacji" maxlength=20 ></td>
+    <td><input type="text" id="kwotaE" required placeholder="Wpisz kwotę w EURO" maxlength=5 onblur=walidacja()></td>
     <td><element id="kwotaExP"></element></td>
     <td><button onclick="wykonaj()">Oblicz</button></td>
     <td><button onclick=" dodajWiersz()">Akceptuj</button></td>

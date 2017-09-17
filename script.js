@@ -33,17 +33,23 @@ var i, z ;
 }
 
 function wykonaj(){
-  if(document.getElementById("tytulT").value=='' || document.getElementById("kwotaE").value==''){
+	var tytul= document.getElementById("tytulT").value;
+	var kwota= document.getElementById("kwotaE").value;
+	
+	
+if(tytul=='' || kwota=='' ){
    alert("uzupełnij tytuł oraz kwote transakcji");
 	return 0;
    } 
+	
+	
 	
 var x = parseFloat(document.getElementById("stawka").value);
 var kwotaE = parseFloat(document.getElementById("kwotaE").value);
  kwotaP = kwotaE*x;
 document.getElementById("kwotaExP").innerHTML = kwotaP.toFixed(2);
  
-	
+
 	
     }
 
@@ -102,17 +108,44 @@ function deleteRow(r) {
     document.getElementById("tg").deleteRow(i);
 }
 
-function odswiezanie(){
+
+
+/*function odswiezanie(){
 var table = document.getElementById('tg');
-var rowCount = table.rows.length-3;        
+var rowCount = table.rows.length-3; 
+
 document.getElementById("tg22").innerHTML = rowCount;   
-    
+  
+
+	
+	
+	
     setTimeout("odswiezanie()",1000);
-}
+}*/
+
+
+
+
+
+
+
 
 function minMax(){
+	
+//-----
+	//var table = document.getElementById('tg');
+	   var table = document.getElementById("tg");
+var rowCount = table.rows.length-3; 
 
-     var table = document.getElementById("tg");
+document.getElementById("tg22").innerHTML = rowCount;   
+  
+
+
+//-----	
+	
+	
+
+ 
     var arrP=[] ;
     var arrE=[] ;
 	var arrT=[] ;
@@ -120,22 +153,41 @@ function minMax(){
     var i;
    for (i = 3; i < table.rows.length; ++i) {
     arrP.push(table.rows[i].cells.item(3).innerHTML);
-    arrE.push(table.rows[i].cells.item(2).innerHTML);
-	   
+    arrE.push(table.rows[i].cells.item(2).innerHTML);  
    }
-    
-var maxP = Math.max.apply(Math, arrP);
+	
+var maxP = Math.max.apply(Math, arrP);	
 var maxE = Math.max.apply(Math, arrE);
+
 var sumP = 0; 
 var sumE = 0; 
    for(i=0;i<arrP.length;i++){
       sumP += parseFloat(arrP[i]);
      sumE += parseFloat(arrE[i]);
    }
-   
-    document.getElementById("tg66").innerHTML =maxP;
+ 
+	
+    document.getElementById("tg66").innerHTML =index;
     document.getElementById("tg44").innerHTML =maxE;
     document.getElementById("tg55").innerHTML =sumP.toFixed(2);
     document.getElementById("tg33").innerHTML =sumE.toFixed(2);
+	
+	
+if(rowCount==0){
+    document.getElementById("tg66").innerHTML ="---";
+    document.getElementById("tg44").innerHTML ="---";
+    document.getElementById("tg55").innerHTML ="---";
+    document.getElementById("tg33").innerHTML ="---";
+   }
+	
     setTimeout("minMax()",1000);
 }
+
+function walidacja(){
+
+	if(isNaN(document.getElementById("kwotaE").value) ){
+alert("to nie jest kwota");
+		return 0;
+	   }
+}
+
